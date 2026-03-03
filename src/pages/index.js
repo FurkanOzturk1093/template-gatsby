@@ -1,127 +1,119 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { Head as GatsbyHead } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Netlify. Get started for free!",
-  },
-]
-
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
-
-const moreLinks = [
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
-
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+const pageStyles = {
+  minHeight: '100vh',
+  background: 'linear-gradient(135deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+  color: '#fff',
+  padding: '2rem',
+  position: 'relative',
+  overflow: 'hidden',
+}
 
 const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
+  <main style={pageStyles}>
+    {/* Glow */}
+    <div style={{
+      position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+      width: '600px', height: '300px',
+      background: 'radial-gradient(ellipse, rgba(102,51,153,0.15) 0%, transparent 70%)',
+      pointerEvents: 'none',
+    }} />
+
+    {/* Live badge */}
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: '8px',
+      background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)',
+      borderRadius: '999px', padding: '6px 16px', marginBottom: '2.5rem',
+      fontSize: '13px', color: '#10b981',
+    }}>
+      <span style={{
+        width: '8px', height: '8px', borderRadius: '50%', background: '#10b981',
+        display: 'inline-block', boxShadow: '0 0 8px #10b981',
+        animation: 'pulse 2s infinite',
+      }} />
+      Live on DeployWise
     </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
-  </Layout>
+
+    {/* Framework badge */}
+    <div style={{
+      background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+      borderRadius: '12px', padding: '8px 20px', marginBottom: '1.5rem',
+      fontSize: '13px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.08em',
+      textTransform: 'uppercase', fontWeight: 600,
+    }}>
+      Gatsby · React · GraphQL
+    </div>
+
+    {/* Heading */}
+    <h1 style={{
+      fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+      fontWeight: 800,
+      margin: '0 0 1rem',
+      textAlign: 'center',
+      lineHeight: 1.1,
+      background: 'linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.5))',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+    }}>
+      Your app is live. 🚀
+    </h1>
+
+    <p style={{
+      fontSize: '1.125rem',
+      color: 'rgba(255,255,255,0.45)',
+      textAlign: 'center',
+      maxWidth: '480px',
+      lineHeight: 1.7,
+      margin: '0 0 3rem',
+    }}>
+      This Gatsby starter is deployed and running on your own VPS.
+      Edit <code style={{ background: 'rgba(255,255,255,0.08)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.9em', color: 'rgba(255,255,255,0.7)' }}>src/pages/index.js</code> to get started.
+    </p>
+
+    {/* CTA */}
+    <a
+      href="https://deploywise.dev"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: 'inline-flex', alignItems: 'center', gap: '10px',
+        background: 'rgba(102,51,153,0.15)', border: '1px solid rgba(102,51,153,0.4)',
+        color: '#c4b5fd', borderRadius: '12px', padding: '14px 28px',
+        textDecoration: 'none', fontSize: '15px', fontWeight: 600,
+      }}
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+      </svg>
+      Deployed with DeployWise
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M7 17L17 7M7 7h10v10"/>
+      </svg>
+    </a>
+
+    <style>{`
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background: #0a0a0a; }
+    `}</style>
+  </main>
 )
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="Home" />
+export const Head = () => (
+  <>
+    <title>Gatsby App — Deployed with DeployWise</title>
+    <meta name="description" content="A Gatsby + React + GraphQL starter template deployed on your own VPS with DeployWise." />
+  </>
+)
 
 export default IndexPage
